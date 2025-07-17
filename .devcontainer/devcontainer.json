@@ -1,18 +1,5 @@
 {
-    "name": "Rust Development",
-    "image": "rust:latest",
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "rust-lang.rust",
-                "matklad.rust-analyzer"
-            ],
-            "settings": {
-                "rust-analyzer.cargo.loadOutDirsFromCheck": true,
-                "rust-analyzer.checkOnSave.command": "clippy"
-            }
-        }
-    },
-    "postCreateCommand": "cargo build",
-    "remoteUser": "vscode"
+"features": {
+    "ghcr.io/devcontainers/features/rust:1": {}
+}
 }
