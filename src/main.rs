@@ -164,7 +164,8 @@ fn main() -> Result<(), Box<dyn Error>> {
             }
             Command::SwitchMode(m) => time_mode = m,
             Command::Add(a) => {
-                readline.helper_mut()
+                readline
+                    .helper_mut()
                     .expect("Helper should be set")
                     .add(a.clone());
                 timelog.add(a);
