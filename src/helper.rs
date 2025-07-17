@@ -24,18 +24,12 @@ use rustyline::Context;
 use rustyline::Result;
 use rustyline::{Helper, Highlighter, Hinter, Validator};
 
-#[derive(Helper, Hinter, Validator, Highlighter)]
+#[derive(Helper, Hinter, Validator, Highlighter, Default)]
 pub struct TimelogHelper {
     entries: VecDeque<String>,
 }
 
 impl TimelogHelper {
-    pub fn new() -> Self {
-        TimelogHelper {
-            entries: VecDeque::new(),
-        }
-    }
-
     pub fn add(&mut self, entry: String) {
         if !self.entries.contains(&entry) {
             self.entries.push_back(entry);
@@ -95,7 +89,7 @@ impl Completer for TimelogHelper {
                                 entry_str
                                     .split(sep)
                                     .next()
-                                    .unwrap_or(&entry_str)
+                                    .unwrap_or(entry_str)
                                     .trim()
                                     .to_string(),
                             )
